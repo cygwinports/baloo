@@ -1,0 +1,16 @@
+--- origsrc/baloo-4.13.3/src/file/CMakeLists.txt	2014-07-13 16:57:16.000000000 -0500
++++ src/baloo-4.13.3/src/file/CMakeLists.txt	2014-09-20 23:34:26.815267900 -0500
+@@ -39,6 +39,7 @@ if(CMAKE_SYSTEM_NAME MATCHES "Linux")
+         kinotify.cpp
+     )
+     add_definitions(-DBUILD_KINOTIFY)
++    add_subdirectory(inotify)
+ endif()
+ 
+ kde4_add_executable(baloo_file ${file_SRCS})
+@@ -67,5 +68,4 @@ add_subdirectory(autotest)
+ add_subdirectory(tests)
+ add_subdirectory(extractor)
+ add_subdirectory(kcm)
+-add_subdirectory(inotify)
+ add_subdirectory(cleaner)

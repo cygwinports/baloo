@@ -1,0 +1,16 @@
+--- origsrc/baloo-4.13.3/src/file/priority.cpp	2014-07-13 16:57:16.000000000 -0500
++++ src/baloo-4.13.3/src/file/priority.cpp	2014-09-07 07:20:54.331958300 -0500
+@@ -31,10 +31,12 @@
+ #include <sys/resource.h>
+ 
+ #include <unistd.h>
+-#ifndef _WIN32
++#ifdef Q_OS_LINUX
+ #include <sys/syscall.h>
+ #include <errno.h>
+ 
++#endif
++#ifndef Q_OS_WIN
+ #include <sched.h>
+ #endif
+ 

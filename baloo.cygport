@@ -1,0 +1,28 @@
+inherit kde4
+
+NAME="baloo"
+VERSION=4.13.3
+RELEASE=1
+CATEGORY="Libs"
+SUMMARY="KDE next generation semantic search"
+DESCRIPTION="Baloo is the next generation of the Nepomuk project. It is
+responsible for handling user metadata such as tags, rating and comments.
+It also handles indexing and searching for files, emails, contacts, and so on."
+
+PATCH_URI="
+	4.13.3-cygwin.patch
+	4.13.3-no-inotify.patch
+"
+
+PKG_NAMES="${NAME} libbaloocore4 libbaloocore-devel"
+baloo_CATEGORY="KDE"
+baloo_OBSOLETES="nepomuk-core"
+baloo_CONTENTS="--exclude=cygbaloo*-4.dll --exclude=dbus-1
+	etc/postinstall/ usr/bin/ usr/lib/kde4/ usr/share/"
+libbaloocore4_CATEGORY="Libs"
+libbaloocore4_CONTENTS="usr/bin/cygbaloo*-4.dll"
+libbaloocore_devel_CATEGORY="Libs"
+libbaloocore_devel_OBSOLETES="libnepomukcore-devel"
+libbaloocore_devel_REQUIRES="libkdecore-devel libkfilemetadata-devel libkpim-devel"
+libbaloocore_devel_CONTENTS="usr/include/ usr/lib/cmake/ usr/lib/*.dll.a
+	usr/share/dbus-1/interfaces/"
